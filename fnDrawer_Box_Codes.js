@@ -22,21 +22,6 @@ const dxMap = {
     11:   'CV1250'
 };
 
-// Original list
-/*
-const dxMap = {
-	2.25: 'CV225',
-	3.5: 'CV350',
-	4.75: 'CV475',
-    6: 'CV600',
-    7.25: 'CV725',
-    8.5: 'CV850',
-    9.75: 'CV975',
-    11: 'CV1100'
-};
-*/
-
-
 if (dxMap[_this.DX]) {
     _this.COMMENT = dxMap[_this.DX];
 }

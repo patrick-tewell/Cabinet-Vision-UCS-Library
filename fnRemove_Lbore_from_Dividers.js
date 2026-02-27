@@ -3,12 +3,12 @@
 
 //Modifies Divider
 
-// Only closets
+// ========== Guard Clauses ==========
 if (_cab.CLASS != ASM_CLASS_CLOSET) {
     return;
 }
-
-// Helper - find first child with matching NAME and _FACEWP
+    
+// ========== Helper Functions ==========
 function findBore(targetName, targetFace) {
     var node = _this.GetFirstChild();
     while (node) {
@@ -20,7 +20,6 @@ function findBore(targetName, targetFace) {
     return null;
 }
 
-// Adjust vbore function with guards
 function adjustBore(bore) {
     if (!bore) return;
 
@@ -37,8 +36,8 @@ var rl = findBore('LRVBORE', 1); // Rear Left
 var fr = findBore('LFVBORE', 2); // Front Right
 var rr = findBore('LRVBORE', 2); // Rear Right
 
-adjustBore(fl); // Front Left
-adjustBore(rl); // Rear Left
-adjustBore(fr); // Front Right
-adjustBore(rr); // Rear Right
+adjustBore(fl);
+adjustBore(rl);
+adjustBore(fr);
+adjustBore(rr);
 }

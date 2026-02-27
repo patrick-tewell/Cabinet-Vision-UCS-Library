@@ -6,17 +6,16 @@
 
 //*** Applies to each NA OBJ_PART ***
 
-// Filter closet systems
+// ========== Guard Clauses ==========
 if (_cab.CLASS != ASM_CLASS_CLOSET && _cab.GetParameterValue('ConstID') != _this.Evaluate('AsmConstID(\'Closet - Backs\')')) {
 	return;
 }
 
-// Filter floor-mount systems
 if (_cab.Y > 10) {
 	return;
 }
 
-// Scan for deck
+
 var hasDeck = false;
 var p = _cab.GetFirstChild().GetFirstChild(); 
 

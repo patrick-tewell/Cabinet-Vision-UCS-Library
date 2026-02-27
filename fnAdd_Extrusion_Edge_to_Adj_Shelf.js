@@ -6,6 +6,7 @@
 
 //*** Applies to each AS OBJ_PART ***
 
+// ========== Guard Clauses ==========
 if (!(_cab.GetParameterValue('ConstID') == _this.Evaluate('AsmConstID(\'Garage\')'))) {
 	return;
 }

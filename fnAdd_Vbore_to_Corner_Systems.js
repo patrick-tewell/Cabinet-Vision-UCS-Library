@@ -6,16 +6,24 @@
 
 //*** Applies to each LU|RU OBJ_PART ***
 
-if (_cab.CLASS != ASM_CLASS_CLOSET) {
-	return;
-}
-
-if (_cab.TYPE != ASM_TYPE_CORNER90) {
+// ========== Guard Clauses ==========
+if (!(_cab.CLASS == ASM_CLASS_CLOSET || _cab.TYPE == ASM_TYPE_CORNER90)) {
 	return;
 }
 
 if (_this.DESC != 'Partition') {
 	return;
+}
+
+// ========== Helper Functions ==========
+function ToImp(num) {
+	return num / 25.4;
+}
+
+function modVbore(vbore)
+{
+	vbore.Y = 0.375;
+	vbore.REPT = rep;
 }
 
 var rep = (_cab.DY / ToImp(32)) + 1;
@@ -29,8 +37,7 @@ if (_this.NAME == 'LU') {
 	}
 	
 	if (lbore.NAME == 'LFVBORE') {
-		lbore.Y = 0.375;
-		lbore.REPT = rep;
+		modVbore(lbore);
 	}
 	
 	// Handles rear line boring
@@ -39,8 +46,7 @@ if (_this.NAME == 'LU') {
 	}
 	
 	if (lbore.NAME == 'LRVBORE') {
-		lbore.Y = 0.375;
-		lbore.REPT = rep;
+		modVbore(lbore);
 	}	
 }
 else if (_this.NAME == 'RU') {
@@ -53,8 +59,7 @@ else if (_this.NAME == 'RU') {
 	
 	if (lbore.NAME == 'LFVBORE') {
 		lbore.X = _this.DX - ToImp(37);
-		lbore.Y = 0.375;
-		lbore.REPT = rep;
+		modVbore(lbore);
 	}
 	
 	// Handles rear line boring
@@ -64,12 +69,8 @@ else if (_this.NAME == 'RU') {
 	
 	if (lbore.NAME == 'LRVBORE') {
 		lbore.X = ToImp(37);
-		lbore.Y = 0.375;
-		lbore.REPT = rep;
+		modVbore(lbore);
 	}
 }
 
-function ToImp(num) {
-	return num / 25.4;
-}
 }

@@ -6,24 +6,18 @@
 
 //*** Applies to each NA|TO|BO|DE|FS|SH|AS|UB|FB|FT|BT|S_HDWCON OBJ_PART ***
 
-// Corner-only CTF handler
+// ========== Guard Clauses ==========
 if (_this.Evaluate('Catalog_Save_Mode')) {
 	return;
 }
 
-// Escape if non-corner system
 if (!(_cab.NAME == 'Corner System Left' || _cab.NAME == 'Corner System Right')) {
 	return;
 }
 
-// Skip panel types that should not get CTF changes
 if (_this.Evaluate(':Name') == 'PT' || _this.Evaluate(':Name') == 'S_DIV') {
 	return;
 }
-
-// Default CTFvalue
-//_this.SetParameter('CTFvalue', 4);
-var ctfVal = _this.Evaluate('CTFvalue');
 
 // Create/remove CTF comments on the system
 if (_this.Evaluate('CTF') != 0) {
@@ -41,20 +35,20 @@ if (_this.NAME == 'TO' || _this.NAME == 'DE' || _this.NAME == 'FS' || _this.NAME
 	// CTF extension - LEFT
 	if (_this.Evaluate('CTF') == -1) {
 		if (_this.NAME != 'DE') {
-			_this.SetParameter('_EDGREXT', ctfVal);
+			_this.SetParameter('_EDGREXT', CTFvalue);
 		} else {
-			_this.SetParameter('_EDGLEXT', ctfVal);
+			_this.SetParameter('_EDGLEXT', CTFvalue);
 		}
 	}
 	// CTF extension - RIGHT
 	if (_this.Evaluate('CTF') == 1) {
 		if (_this.NAME != 'UB' && _this.NAME != 'FB' && _this.NAME != 'FILLER') {
-			_this.SetParameter('_EDGTEXT', ctfVal);
+			_this.SetParameter('_EDGTEXT', CTFvalue);
 		} else {
 			if (_this.AZ < 0 && _this.AZ > -180) {
-				_this.SetParameter('_EDGTEXT', ctfVal);
+				_this.SetParameter('_EDGTEXT', CTFvalue);
 			} else {
-				_this.SetParameter('_EDGREXT', ctfVal);
+				_this.SetParameter('_EDGREXT', CTFvalue);
 			}
 		}
 	}
@@ -63,9 +57,9 @@ if (_this.NAME == 'TO' || _this.NAME == 'DE' || _this.NAME == 'FS' || _this.NAME
 // Apply CTF to Nailer
 if (_this.NAME == 'NA') {
 	if (_this.Evaluate('CTF') == -1 && _this.Z == _cab.DZ) { // LEFT
-		_this.SetParameter('_EDGBEXT', ctfVal);
+		_this.SetParameter('_EDGBEXT', CTFvalue);
 	} else if (_this.Evaluate('CTF') == 1 && _this.AX == 0) { // RIGHT
-		_this.SetParameter('_EDGBEXT', ctfVal);
+		_this.SetParameter('_EDGBEXT', CTFvalue);
 	}
 }
 
@@ -95,11 +89,13 @@ if (_this.NAME == 'S_HDWCON') {
 // Remove hardware and apply CTF to Toe Kick
 if (_this.NAME == 'FT') {
 	if (_this.Evaluate('CTF') == -1 && _this.Z == _cab.DZ) { // Left TK
+		// *** Check DY/DZ and AY/AZ to verify *****************************
 		_this.GetFirstChild().QTY = 0; // First child is always the left rafix on left tk
-		_this.SetParameter('_EDGBEXT', ctfVal);
+		_this.SetParameter('_EDGBEXT', CTFvalue);
 	} else if (_this.Evaluate('CTF') == 1 && _this.Z != _cab.DZ) { // Right TK
+		// *** Check DY/DZ and AY/AZ to verify *****************************
 		_this.GetFirstChild().GetNextSibling().QTY = 0; // First child is always the right rafix on right tk so we get sibling
-		_this.SetParameter('_EDGTEXT', ctfVal);
+		_this.SetParameter('_EDGTEXT', CTFvalue);
 	}
 }
 

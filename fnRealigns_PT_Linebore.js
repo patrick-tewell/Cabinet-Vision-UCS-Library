@@ -3,7 +3,6 @@
 
 // UCS converted to JS 12-30-25 08:39:02
 //Adjust Partitions Length and Height to 32mm ** Version 23.3 **
-//There is nothing to modify in this UCS
 //*** Applies to each L?VBORE OBJ_PART ***
 
 //==================================================================================

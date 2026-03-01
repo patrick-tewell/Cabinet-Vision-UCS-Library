@@ -4,9 +4,7 @@
 //Modifies Divider
 
 // ========== Guard Clauses ==========
-if (_cab.CLASS != ASM_CLASS_CLOSET) {
-    return;
-}
+if (_cab.CLASS != ASM_CLASS_CLOSET) return;
     
 // ========== Helper Functions ==========
 function findBore(targetName, targetFace) {
@@ -40,4 +38,5 @@ adjustBore(fl);
 adjustBore(rl);
 adjustBore(fr);
 adjustBore(rr);
+
 }

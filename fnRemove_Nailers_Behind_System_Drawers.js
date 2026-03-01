@@ -6,20 +6,9 @@
 
 //*** Applies to each DWR_OPEN OBJ_PART ***
 
-// Filter closet systems ignoring systesm with backs
-if (_cab.CLASS != ASM_CLASS_CLOSET && _cab.GetParameterValue('ConstID') != _cab.Evaluate('AsmConstID(\'Closet - Backs\')')) {
-	return;
-}
-
-// Filter floor-mount systems
-if (_cab.Y > 1) {
-	return;
-}
-
-// Filter left guide and those in range of nailer
-if (_this.Y > 5) {
-	return;
-}
+if (_cab.CLASS != ASM_CLASS_CLOSET && _cab.GetParameterValue('ConstID') != _cab.Evaluate('AsmConstID(\'Closet - Backs\')')) return;
+if (_cab.Y > 1) return;
+if (_this.Y > 5) return;
 
 // Get case reference
 var cse = _cab.GetFirstChild();

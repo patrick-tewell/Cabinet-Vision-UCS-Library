@@ -1,12 +1,9 @@
-﻿function fnRemove_Lbore_from_Dividers()
-{
-
 //Modifies Divider
 
-// ========== Guard Clauses ==========
-if (_cab.CLASS != ASM_CLASS_CLOSET) return;
-    
-// ========== Helper Functions ==========
+if (_cab.CLASS != ASM_CLASS_CLOSET) {
+    return;
+}
+
 function findBore(targetName, targetFace) {
     var node = _this.GetFirstChild();
     while (node) {
@@ -38,5 +35,3 @@ adjustBore(fl);
 adjustBore(rl);
 adjustBore(fr);
 adjustBore(rr);
-
-}

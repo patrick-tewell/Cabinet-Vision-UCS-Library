@@ -1,18 +1,3 @@
-﻿function fnROC_Dados()
-{
-
-/***Do not modify script below***/
-
-// public variables
-const createDados = 'true';
-const dadoWidth = 0.25;
-const minGap = 4.625;
-
-/***Do not modify script above***/
-
-// UCS converted to JS 02-26-26 13:59:32
-//Modifies 1in WIDE SOLID
-
 //*** Applies to each DE|TO OBJ_PART ***
 
 if (_cab.NAME != 'ROC') {
@@ -28,7 +13,6 @@ if (createDados == 'false') {
 	return;
 }
 
-// ----- Helpers -----
 function createBottomNotches(object) {
 	// Dado on bottom for shelf pin - LEFT
 	var GROOVE = object.CreateChild(OBJ_DEPDADO, 'DADO');
@@ -153,6 +137,4 @@ if (_this.NAME == 'DE') {
 		GROOVE.AY = 180;
 		GROOVE.AZ = -90;
 	}
-}
-
 }

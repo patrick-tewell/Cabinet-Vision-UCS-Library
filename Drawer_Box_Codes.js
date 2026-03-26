@@ -1,5 +1,7 @@
 //*** Applies to each BF|BBK OBJ_PART ***
 
+// 'DDCode#' are public variables accessible from the UCS manager
+
 const dxMap = new Map([
 	[2.25,   DDCode1],
 	[3.5,    DDCode2],

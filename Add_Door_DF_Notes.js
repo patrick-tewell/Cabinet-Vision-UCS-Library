@@ -1,16 +1,10 @@
-﻿function fnAdd_Door_DF_Notes()
-{
-
-// UCS converted to JS 12-30-25 16:46:19
-//Modifies Door
-
 //*** Applies to each DOR|DWR OBJ_ASSEMBLY ***
 
-var shaker = 245;
-var shakerDrawer = 246;
-var shakerMidRail = 262;
-var shakerGlass = 263;
-var shakerGlassMidRail = 264;
+const shaker = 245;
+const shakerDrawer = 246;
+const shakerMidRail = 262;
+const shakerGlass = 263;
+const shakerGlassMidRail = 264;
 
 
 if (!(_this.Evaluate('_STYLEID') == shaker 
@@ -29,6 +23,4 @@ if (_cab.CLASS == ASM_CLASS_CLOSET) {
 	if (!_this.COMMENT) {
 		_this.COMMENT = 'Cabinet';
 	}
-}
-
 }

@@ -45,7 +45,13 @@ function createGrooves(object, dyOffset, xOffset, i) {
 	GROOVE.VISIBLE = true;
 	GROOVE.SetParameter('_FACEWP', 1);
 	GROOVE.DX = dadoWidth;
-	GROOVE.DY = _cab.DZ - dyOffset;
+		
+	if (object.NAME == 'TO') {
+		GROOVE.DY = _cab.DY - dyOffset;
+	} else {
+		GROOVE.DY = _cab.DZ - dyOffset;
+	}
+	
 	GROOVE.DZ = dadoWidth;
 	GROOVE.X = xOffset;
 	
